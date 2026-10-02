@@ -1,0 +1,41 @@
+Built dist/mathpath.jar
+PASS fractions normalize signs and reduce
+PASS integer, decimal and comma answers
+PASS equivalent fractions and spaced division
+PASS exact rational operations
+PASS zero denominators are rejected
+PASS malformed or oversized answers are rejected
+PASS rounding accepts hundredths without accepting inaccurate fractions
+PASS question collections are immutable
+PASS 15,000 generated answers match independent arithmetic
+PASS five original lessons include examples and worked steps
+PASS empty progress is valid
+PASS next requires a completed answer
+PASS invalid input cannot change progress
+PASS each question can only be graded once
+PASS correct independent answers earn full points and streak
+PASS hints earn half points and break the independent streak
+PASS revealed solutions earn no points and enter review
+PASS wrong answers enter review
+PASS review needs an independent correct answer to clear a mistake
+PASS an empty review queue does not replace a practice session
+PASS adaptive increases require six attempts at each level
+PASS adaptive decreases after six struggling attempts
+PASS hints prevent an adaptive level increase
+PASS topic difficulty adapts independently
+PASS fixed practice levels remain fixed
+PASS quiz contains two questions per topic and records one result
+PASS quiz skips count as wrong and hints are unavailable
+PASS unfinished quizzes preserve attempts but no quiz result
+PASS history and review bounds preserve lifetime totals
+PASS quiz history retains the latest twenty results
+PASS mismatched attempts are rejected without mutation
+PASS missing save data starts a fresh profile
+PASS saved totals, unicode, review questions and quiz results round-trip
+PASS damaged data is backed up before recovery
+PASS unsupported schema is preserved and cannot be overwritten
+PASS inconsistent counters recover instead of displaying fake totals
+PASS failed saves report an error and leave no temporary files
+Core tests: 37 passed, 0 failed.
+PASS Swing flows: five lessons, input validation, Enter submission, hints, navigation, review, ten-question quiz, settings and saved progress.
+PASS Actual Swing screens rendered at 1240×850 and 1040×700.

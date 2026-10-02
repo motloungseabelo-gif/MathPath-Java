@@ -1,0 +1,50 @@
+name: Verify MathPath
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Java 17 / ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Build and verify on macOS / Linux
+        if: runner.os != 'Windows'
+        shell: bash
+        run: bash scripts/test.sh
+      - name: Build and verify on Windows
+        if: runner.os == 'Windows'
+        shell: cmd
+        run: call test.bat
+      - name: Verify real desktop input on Linux
+        if: runner.os == 'Linux'
+        shell: bash
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y xvfb
+          xvfb-run -a java -cp dist/mathpath.jar:build/test-classes com.mathpath.DesktopSmokeTest
+      - name: Save runnable application
+        uses: actions/upload-artifact@v7
+        with:
+          name: mathpath-${{ runner.os }}-java17
+          path: dist/mathpath.jar
+          if-no-files-found: error
+          retention-days: 30

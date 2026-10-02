@@ -1,0 +1,11 @@
+build/
+dist/
+*.class
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+.mathpath/
+progress.properties
+progress.corrupt-*.properties
