@@ -98,7 +98,7 @@ xvfb-run -a bash scripts/test.sh --desktop
 
 On Windows, use `test.bat --desktop`. The optional test opens a window and needs a graphical session; see [the verification report](docs/TESTING.md) for what was verified locally.
 
-The included GitHub Actions workflow runs the automated suite on Linux, Windows and macOS, then runs the native desktop smoke test on Linux and makes the JAR available as a workflow artifact. A workflow run is required before claiming any CI result.
+The included GitHub Actions workflow runs the automated suite on Linux, Windows and macOS, then runs the native desktop smoke test on Linux and makes the JAR available as a workflow artifact. [The first published verification run](https://github.com/motloungseabelo-gif/MathPath-Java/actions/runs/37061447745) passed on all three platforms, including the Linux native desktop test.
 
 ## Design and structure
 
@@ -134,7 +134,7 @@ java -Dmathpath.dataDir=/path/to/my-progress -jar dist/mathpath.jar
 
 Lifetime totals are retained. Recent attempts are limited to 500, mistake review to the latest 100 distinct questions, and quiz results to the latest 20. When review is full, the oldest entry is removed. A damaged save is preserved as a `progress.corrupt-*.properties` backup before starting fresh. Unsupported versions and unreadable data disable saving to avoid overwriting them.
 
-This is a single learner, single running instance application. The save file is not encrypted. There is no cloud synchronization, formal curriculum alignment, student account system or server backend. The active question is not resumed after closing the app; completed attempts are saved. Windows and macOS execution should be confirmed by their CI jobs or on those platforms.
+This is a single learner, single running instance application. The save file is not encrypted. There is no cloud synchronization, formal curriculum alignment, student account system or server backend. The active question is not resumed after closing the app; completed attempts are saved. The automated suite passed on Linux, Windows and macOS; native mouse and keyboard testing also passed on Linux in GitHub Actions.
 
 ## Author
 

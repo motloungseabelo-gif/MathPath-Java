@@ -31,12 +31,25 @@ Equivalent Windows command:
 test.bat
 ```
 
-Test logs are in [test-results.txt](test-results.txt). Screenshots are in [screenshots/](screenshots/).
+Local test logs are in [test-results.txt](test-results.txt). Screenshots are in [screenshots/](screenshots/).
+
+## GitHub Actions verification
+
+[Verify MathPath run 1](https://github.com/motloungseabelo-gif/MathPath-Java/actions/runs/37061447745) completed successfully for published application commit `9335563a7b2f0237254da7b7d3d2401bfa259af5`. Its source tree exactly matches the locally tested source tree.
+
+| CI job | Result |
+| --- | --- |
+| Java 17 / Ubuntu | Passed: build, core suite, Swing flows, rendering and native desktop input |
+| Java 17 / Windows | Passed: Windows build script, core suite, Swing flows and rendering |
+| Java 17 / macOS | Passed: build, core suite, Swing flows and rendering |
+| Runnable JAR artifact | Uploaded successfully by all three jobs |
+
+The native Linux test used a real Swing window under Xvfb and verified mouse navigation, typed input, Enter submission, saved progress and window resizing.
 
 ## Verification limits
 
-The optional native desktop smoke test could not run in the current execution environment because its X server could not establish a listening socket. The headless Swing control and rendering tests passed. The optional test is included for a normal desktop or CI runner, but no local native-window pass is claimed.
+The optional native desktop smoke test could not run in the local execution environment because its X server could not establish a listening socket. The headless Swing control and rendering tests passed locally. The native test subsequently passed on the GitHub Actions Linux runner.
 
-Windows and macOS execution was not available locally. The workflow includes both platforms and Linux, but it has not run until the project is published to GitHub. Compiler compatibility and scripted UI verification are not a substitute for a platform-specific pass.
+Windows and macOS execution was not available locally; their GitHub Actions jobs passed. Native mouse and keyboard testing was performed on Linux, not on Windows or macOS.
 
 Full screen reader validation and evaluation with students or teachers have not been performed.
