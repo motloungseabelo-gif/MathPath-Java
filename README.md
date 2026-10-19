@@ -27,6 +27,15 @@ I built this project to explore desktop software, exact mathematical modelling, 
 
 ## Quick start
 
+Clone the source, then enter the project folder:
+
+```bash
+git clone https://github.com/motloungseabelo-gif/MathPath-Java.git
+cd MathPath-Java
+```
+
+Confirm `java -version` and `javac -version` report version 17 or newer.
+
 Requires **Java 17 or newer**. Building from source needs a JDK, including `javac` and `jar`. There are no third-party runtime libraries or dependency downloads.
 
 ### Windows
@@ -38,7 +47,7 @@ build.bat
 run.bat
 ```
 
-The downloadable project includes a built JAR, so you can also run `run.bat` directly if Java 17+ is installed.
+A clone or GitHub source ZIP contains source code, not a prebuilt JAR. Run `build.bat` first. If you have separately downloaded a release bundle containing `dist/mathpath.jar`, you can run `run.bat` directly with Java 17+ installed.
 
 ### macOS / Linux
 
@@ -135,6 +144,20 @@ java -Dmathpath.dataDir=/path/to/my-progress -jar dist/mathpath.jar
 Lifetime totals are retained. Recent attempts are limited to 500, mistake review to the latest 100 distinct questions, and quiz results to the latest 20. When review is full, the oldest entry is removed. A damaged save is preserved as a `progress.corrupt-*.properties` backup before starting fresh. Unsupported versions and unreadable data disable saving to avoid overwriting them.
 
 This is a single learner, single running instance application. The save file is not encrypted. There is no cloud synchronization, formal curriculum alignment, student account system or server backend. The active question is not resumed after closing the app; completed attempts are saved. The automated suite passed on Linux, Windows and macOS; native mouse and keyboard testing also passed on Linux in GitHub Actions.
+
+## Screenshots and demo
+
+See the [screenshot checklist](docs/SCREENSHOTS.md) for the existing gallery and the remaining review and quiz captures. The [portfolio notes](docs/PORTFOLIO.md) include a one-minute demonstration.
+
+## Troubleshooting
+
+| Problem | Next step |
+| --- | --- |
+| Java or javac is not found | Install a JDK 17+ and add its bin folder to PATH; reopen the terminal. |
+| Unable to access dist/mathpath.jar | Run the build command from the project folder first. |
+| UnsupportedClassVersionError | Check that the Java used to run the JAR is version 17+. |
+| Graphical desktop required | Run on a desktop session; use the test command for headless verification. |
+| Progress is not saving | Read the footer warning; use a writable data directory and only one app instance per directory. Preserve the original save before troubleshooting. |
 
 ## Author
 
